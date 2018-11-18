@@ -2,22 +2,22 @@ steps:
 # Restore the api project dependencies in the agent folder
 # Output them to .nugets, so that the container can use them
 - task: DotNetCoreCLI@2
-  displayName: 'Restore theatreers.production dependencies'
+  displayName: 'Restore $(projectName) dependencies'
   inputs:
     command: restore
-    projects: 'theatreers.production/theatreers.production.csproj'
+    projects: '$(projectName)/$(projectName).csproj'
     vstsFeed: 'theatreers.Artifacts'
-    restoreDirectory: '$(System.DefaultWorkingDirectory)/.nugets'
+    restoreDirectory: '$(System.DefaultWorkingDirectory)/$(nugets)'
     verbosityRestore: Normal
 # Restore the tests dependencies in the agent folder
 # Output them to .nugets, so that the container can use them
 - task: DotNetCoreCLI@2
-  displayName: 'Restore theatreers.production.tests dependencies'
+  displayName: 'Restore $(projectName).tests dependencies'
   inputs:
     command: restore
-    projects: 'theatreers.production.tests/theatreers.production.tests.csproj'
+    projects: '$(projectName).tests/$(projectName).tests.csproj'
     vstsFeed: 'theatreers.Artifacts'
-    restoreDirectory: '$(System.DefaultWorkingDirectory)/.nugets'
+    restoreDirectory: '$(System.DefaultWorkingDirectory)/$(nugets)'
     verbosityRestore: Normal
 # Build the docker image to run the tests.
 # Pass in the packages argument to pass in the directory path
@@ -36,9 +36,9 @@ steps:
   inputs:
     script: |
      echo "Unit tests initiated"
-     docker run --name test --rm -v $(Build.ArtifactStagingDirectory)/results/:/theatreers.production.tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
+     docker run --name test --rm -v $(agentTestResultPath)/:/$(projectName).tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
      echo "Unit tests completed"
-    workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
+    #workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
     #failOnStderr: false # Optional
 # Publish the test results that are in the mounted volume, that have
 # come from the container. This will be a type of VSTest rather than
@@ -47,7 +47,7 @@ steps:
   displayName: 'Publish Test Results'
   inputs:
     testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit
-    testResultsFiles: '$(Build.ArtifactStagingDirectory)/results/TEST-*.xml' 
+    testResultsFiles: '$(agentTestResultPath)/TEST-*.xml' 
 # Build the run-time image for publishing.
 # Pass in the packages argument to pass in the directory path
 # (deployment variable), also pass in target as test env.
