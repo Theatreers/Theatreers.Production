@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using theatreers.shared.Models;
-using theatreers.shared.Interfaces;
+using Theatreers.Shared.Models;
+using Theatreers.Shared.Interfaces;
 
 namespace Theatreers.Production.Controllers
 {
