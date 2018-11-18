@@ -38,7 +38,7 @@ steps:
      echo "Unit tests initiated"
      docker run --name test --rm -v $(agentTestResultPath)/:/$(solutionName).tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
      echo "Unit tests completed"
-    workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
+    #workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
     #failOnStderr: false # Optional
 # Publish the test results that are in the mounted volume, that have
 # come from the container. This will be a type of VSTest rather than
