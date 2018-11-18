@@ -2,20 +2,20 @@ steps:
 # Restore the api project dependencies in the agent folder
 # Output them to .nugets, so that the container can use them
 - task: DotNetCoreCLI@2
-  displayName: 'Restore $(solutionName) dependencies'
+  displayName: 'Restore theatreers.production dependencies'
   inputs:
     command: restore
-    projects: '$(solutionName)/$(solutionName).csproj'
+    projects: 'theatreers.production/theatreers.production.csproj'
     vstsFeed: 'theatreers.Artifacts'
     restoreDirectory: '$(System.DefaultWorkingDirectory)/.nugets'
     verbosityRestore: Normal
 # Restore the tests dependencies in the agent folder
 # Output them to .nugets, so that the container can use them
 - task: DotNetCoreCLI@2
-  displayName: 'Restore $(solutionName).tests dependencies'
+  displayName: 'Restore theatreers.production.tests dependencies'
   inputs:
     command: restore
-    projects: '$(solutionName).tests/$(solutionName).tests.csproj'
+    projects: 'theatreers.production.tests/theatreers.production.tests.csproj'
     vstsFeed: 'theatreers.Artifacts'
     restoreDirectory: '$(System.DefaultWorkingDirectory)/.nugets'
     verbosityRestore: Normal
@@ -36,7 +36,7 @@ steps:
   inputs:
     script: |
      echo "Unit tests initiated"
-     docker run --name test --rm -v $(Build.ArtifactStagingDirectory)/results/:/$(solutionName).tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
+     docker run --name test --rm -v $(Build.ArtifactStagingDirectory)/results/:/theatreers.production.tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
      echo "Unit tests completed"
     workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
     #failOnStderr: false # Optional
