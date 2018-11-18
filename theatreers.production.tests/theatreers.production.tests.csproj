@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\theatreers.production\theatreers.production.csproj" />
+    <ProjectReference Include="..\Theatreers.Production\Theatreers.Production.csproj" />
   </ItemGroup>
 
 </Project>

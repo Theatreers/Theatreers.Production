@@ -5,37 +5,37 @@ using theatreers.shared.Interfaces;
 
 public class ProductionServiceFake : IProductionService
 {
-    private readonly List<Production> _ProductionList;
+    private readonly List<ProductionModel> _ProductionList;
  
     public ProductionServiceFake()
     {
-        _ProductionList = new List<Production>()
+        _ProductionList = new List<ProductionModel>()
             {
-                new Production() { Id = 1, Name = "ROS presents Anne" },
-                new Production() { Id = 2, Name = "Sainsbury Singers presents Anything Goes" },
-                new Production() { Id = 3, Name = "EBOS presents Singing in the Rain!" }
+                new ProductionModel() { Id = 1, Name = "ROS presents Anne" },
+                new ProductionModel() { Id = 2, Name = "Sainsbury Singers presents Anything Goes" },
+                new ProductionModel() { Id = 3, Name = "EBOS presents Singing in the Rain!" }
             };
     }
  
-    public IEnumerable<Production> GetAll()
+    public IEnumerable<ProductionModel> GetAll()
     {
         return _ProductionList;
     }
     
-    public Production GetById(int id)
+    public ProductionModel GetById(int id)
     {
         return _ProductionList.Where(a => a.Id == id)
             .FirstOrDefault();
     }
  
-    public Production Create(Production newItem)
+    public ProductionModel Create(ProductionModel newItem)
     {
         newItem.Id = _ProductionList.Count + 1;
         _ProductionList.Add(newItem);
         return newItem;
     }
 
-    public Production Update(Production body)
+    public ProductionModel Update(ProductionModel body)
     {
         var existing = _ProductionList.First(a => a.Id == body.Id);
         return existing;

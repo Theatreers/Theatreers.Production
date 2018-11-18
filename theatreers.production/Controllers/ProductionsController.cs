@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using theatreers.shared.Models;
 using theatreers.shared.Interfaces;
 
-namespace theatreers.production.Controllers
+namespace Theatreers.Production.Controllers
 {
     //[Authorize]
     [Route("productions")]
@@ -23,7 +23,7 @@ namespace theatreers.production.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Production>> Get()
+        public ActionResult<IEnumerable<ProductionModel>> Get()
         {               
             var items = _service.GetAll();
             return Ok(items);
@@ -31,7 +31,7 @@ namespace theatreers.production.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<Production> Get(int id)
+        public ActionResult<ProductionModel> Get(int id)
         {   
             var item = _service.GetById(id);
     
@@ -45,20 +45,20 @@ namespace theatreers.production.Controllers
 
         // POST api/values
         [HttpPost]
-        public ActionResult Post([FromBody] Production body)
+        public ActionResult Post([FromBody] ProductionModel body)
         {      
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
     
-            Production item = _service.Create(body);
+            ProductionModel item = _service.Create(body);
             return CreatedAtAction("Get", new { id = item.Id }, item);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public ActionResult<Production> Put([FromBody] Production body)
+        public ActionResult<ProductionModel> Put([FromBody] ProductionModel body)
         {                
             var existingItem = _service.GetById(body.Id);
  

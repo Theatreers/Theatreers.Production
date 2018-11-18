@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using theatreers.production.Controllers;
+using Theatreers.Production.Controllers;
 using theatreers.shared.Interfaces;
 using theatreers.shared.Models;
 using theatreers.shared.Services;
 using Xunit;
 
-namespace theatreers.production.tests
+namespace Theatreers.Production.tests
 {
     public class ProductionsControllerTest
     {
@@ -37,7 +37,7 @@ namespace theatreers.production.tests
             var okResult = _controller.Get().Result as OkObjectResult;
 
             // Assert
-            var items = Assert.IsType<List<Production>>(okResult.Value);
+            var items = Assert.IsType<List<ProductionModel>>(okResult.Value);
             Assert.Equal(3, items.Count);
         }
 
@@ -74,15 +74,15 @@ namespace theatreers.production.tests
             var okResult = _controller.Get(testId).Result as OkObjectResult;
 
             // Assert
-            Assert.IsType<Production>(okResult.Value);
-            Assert.Equal(testId, (okResult.Value as Production).Id);
+            Assert.IsType<ProductionModel>(okResult.Value);
+            Assert.Equal(testId, (okResult.Value as ProductionModel).Id);
         }
 
         [Fact]
         public void Add_InvalidObjectPassed_ReturnsBadRequest()
         {
             // Arrange
-            var nameMissingItem = new Production()
+            var nameMissingItem = new ProductionModel()
             {
                 Id = 1
             };
@@ -100,7 +100,7 @@ namespace theatreers.production.tests
         public void Add_ValidObjectPassed_ReturnsCreatedResponse()
         {
             // Arrange
-            Production testItem = new Production()
+            ProductionModel testItem = new ProductionModel()
             {
                 Name = "Les Miserables"
             };
@@ -116,17 +116,17 @@ namespace theatreers.production.tests
         public void Add_ValidObjectPassed_ReturnedResponseHasCreatedItem()
         {
             // Arrange
-            var testItem = new Production()
+            var testItem = new ProductionModel()
             {
                 Name = "Wicked"
             };
 
             // Act
             var createdResponse = _controller.Post(testItem) as CreatedAtActionResult;
-            var item = createdResponse.Value as Production;
+            var item = createdResponse.Value as ProductionModel;
 
             // Assert
-            Assert.IsType<Production>(item);
+            Assert.IsType<ProductionModel>(item);
             Assert.Equal("Wicked", item.Name);
         }
 
@@ -167,7 +167,7 @@ namespace theatreers.production.tests
 
             // Assert
             var validateCount = _controller.Get().Result as OkObjectResult;
-            var updatedItems = Assert.IsType<List<Production>>(validateCount.Value);
+            var updatedItems = Assert.IsType<List<ProductionModel>>(validateCount.Value);
             Assert.Equal(2, updatedItems.Count);
         }
 
@@ -175,7 +175,7 @@ namespace theatreers.production.tests
         public void Update_NotExistingGuidPassed_ReturnsNotFoundResponse()
         {            
             // Arrange
-            var proposedUpdate = new Production()
+            var proposedUpdate = new ProductionModel()
             {
                 Id = 13674,
                 Name = "Phantom of the Opera"
@@ -192,7 +192,7 @@ namespace theatreers.production.tests
         public void Update_ValidObjectPassed_ReturnedResponseHasUpdatedItem()
         {
             // Arrange
-            var proposedUpdate = new Production()
+            var proposedUpdate = new ProductionModel()
             {
                 Id = 1,
                 Name = "ROS presents Annie"
@@ -203,8 +203,8 @@ namespace theatreers.production.tests
 
             // Assert
             var validateResult = _controller.Get(proposedUpdate.Id).Result as OkObjectResult;
-            Assert.IsType<Production>(okResult.Value);
-            Assert.Equal(proposedUpdate.Name, (okResult.Value as Production).Name);
+            Assert.IsType<ProductionModel>(okResult.Value);
+            Assert.Equal(proposedUpdate.Name, (okResult.Value as ProductionModel).Name);
         }
     }
 }

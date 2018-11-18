@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "theatreers.production": {
+    "Theatreers.Production": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

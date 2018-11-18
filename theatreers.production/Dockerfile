@@ -4,13 +4,13 @@ FROM microsoft/dotnet:sdk AS build-env
 # In the build environment, set our work directory as app 
 # also add packages to pull in the path from our build agent
 # for packages that need to be installed.
-WORKDIR /theatreers.production
+WORKDIR /Theatreers.Production
 ARG packages
 
 # Only copy the csproj for now. Then the relevant packages
 # from the agent, so they can be used as part of the restore
 # process (this is done as part of publish task).
-COPY theatreers.production/theatreers.production.csproj ./
+COPY Theatreers.Production/Theatreers.Production.csproj ./
 COPY /$packages .nugets
 
 # Copy the remaining application files. Publish the dll,
@@ -20,28 +20,28 @@ COPY /$packages .nugets
 # require a restore to occur. Hence pointing to the source
 # folder inside the dotnet publish task.
 
-COPY theatreers.production/ ./
-RUN dotnet publish /theatreers.production/theatreers.production.csproj --source ".nugets" -c Release -o /theatreers.production/out
+COPY Theatreers.Production/ ./
+RUN dotnet publish /Theatreers.Production/Theatreers.Production.csproj --source ".nugets" -c Release -o /Theatreers.Production/out
 
 # Set the work directory as the tests directory
 # Copy the tests from agent to docker environment
 # Restore the packages for the original package
 
 FROM build-env AS test-env
-WORKDIR /theatreers.production.tests
-COPY theatreers.production.tests/. ./
-RUN dotnet restore --source "/theatreers.production/.nugets"
+WORKDIR /Theatreers.Production.Tests
+COPY Theatreers.Production.Tests/. ./
+RUN dotnet restore --source "/Theatreers.Production/.nugets"
 
 # Run the test output it to an XML file in the results directory
 # Copy that file back to the main agent, ready for the publish
 # task later on
-ENTRYPOINT dotnet test --"logger:trx;LogFileName=/theatreers.production.tests/results/TEST-output.xml"  --no-restore
+ENTRYPOINT dotnet test --"logger:trx;LogFileName=/Theatreers.Production.Tests/results/TEST-output.xml"  --no-restore
 # Chown all the files to the app user.
-RUN chmod -R o+wrx /theatreers.production.tests
+RUN chmod -R o+wrx /Theatreers.Production.Tests
 
 # Now, let's switch to building the runtime image.
 # We will use the aspnetcore-runtime image for this.
 FROM microsoft/dotnet:aspnetcore-runtime AS runtime
 WORKDIR /app
-COPY --from=build-env /theatreers.production/out .
-ENTRYPOINT ["dotnet", "theatreers.production.dll"]
+COPY --from=build-env /Theatreers.Production/out .
+ENTRYPOINT ["dotnet", "Theatreers.Production.dll"]
