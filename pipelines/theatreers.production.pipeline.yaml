@@ -2,20 +2,20 @@ steps:
 # Restore the api project dependencies in the agent folder
 # Output them to .nugets, so that the container can use them
 - task: DotNetCoreCLI@2
-  displayName: 'Restore $(solutionName) dependencies'
+  displayName: 'Restore $(projectName) dependencies'
   inputs:
     command: restore
-    projects: '$(solutionName)/$(solutionName).csproj'
+    projects: '$(projectName)/$(projectName).csproj'
     vstsFeed: 'theatreers.Artifacts'
     restoreDirectory: '$(System.DefaultWorkingDirectory)/.nugets'
     verbosityRestore: Normal
 # Restore the tests dependencies in the agent folder
 # Output them to .nugets, so that the container can use them
 - task: DotNetCoreCLI@2
-  displayName: 'Restore $(solutionName).tests dependencies'
+  displayName: 'Restore $(projectName).tests dependencies'
   inputs:
     command: restore
-    projects: '$(solutionName).tests/$(solutionName).tests.csproj'
+    projects: '$(projectName).tests/$(projectName).tests.csproj'
     vstsFeed: 'theatreers.Artifacts'
     restoreDirectory: '$(System.DefaultWorkingDirectory)/.nugets'
     verbosityRestore: Normal
@@ -36,9 +36,9 @@ steps:
   inputs:
     script: |
      echo "Unit tests initiated"
-     docker run --name test --rm -v $(agentTestResultPath)/:/$(solutionName).tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
+     docker run --name test --rm -v $(Build.ArtifactStagingDirectory)/results/:/$(projectName).tests/results/ $(dockerId)/$(imageName)-test:$(Build.BuildId)
      echo "Unit tests completed"
-    #workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
+    workingDirectory: $(Build.ArtifactStagingDirectory) # Optional
     #failOnStderr: false # Optional
 # Publish the test results that are in the mounted volume, that have
 # come from the container. This will be a type of VSTest rather than
@@ -47,7 +47,7 @@ steps:
   displayName: 'Publish Test Results'
   inputs:
     testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit
-    testResultsFiles: '$(agentTestResultPath)/TEST-*.xml' 
+    testResultsFiles: '$(Build.ArtifactStagingDirectory)/results/TEST-*.xml' 
 # Build the run-time image for publishing.
 # Pass in the packages argument to pass in the directory path
 # (deployment variable), also pass in target as test env.
