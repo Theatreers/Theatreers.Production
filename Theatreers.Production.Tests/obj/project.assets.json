@@ -3111,16 +3111,16 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "theatreers.shared/0.0.7": {
+      "Theatreers.Shared/0.0.12": {
         "type": "package",
         "dependencies": {
           "MySqlConnector": "0.47.1"
         },
         "compile": {
-          "lib/netstandard2.0/theatreers.shared.dll": {}
+          "lib/netstandard2.0/Theatreers.Shared.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/theatreers.shared.dll": {}
+          "lib/netstandard2.0/Theatreers.Shared.dll": {}
         }
       },
       "xunit/2.3.1": {
@@ -3208,20 +3208,20 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "theatreers.production/1.0.0": {
+      "Theatreers.Production/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "0.1.1646902",
           "Newtonsoft.json": "11.0.2",
-          "theatreers.shared": "0.0.7"
+          "Theatreers.Shared": "0.0.12"
         },
         "compile": {
-          "bin/placeholder/theatreers.production.dll": {}
+          "bin/placeholder/Theatreers.Production.dll": {}
         },
         "runtime": {
-          "bin/placeholder/theatreers.production.dll": {}
+          "bin/placeholder/Theatreers.Production.dll": {}
         }
       }
     }
@@ -9329,13 +9329,13 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "theatreers.shared/0.0.7": {
-      "sha512": "f7K9qv6MRISmnX7HlZQL/sLyechJR2u46Eu6WhpfvD5y16neVlHPFUPyY6PPBYz/zvO/ZgErEZe5OwV73i5crw==",
+    "Theatreers.Shared/0.0.12": {
+      "sha512": "5K9L9HiDGRk5E+ysjm0lwA3FeOaoqWdypvGGvVDSeiDwP8vAurQfPPjxuAVo9z5AZQ/jR7RFXtEiOMNwZc3cIw==",
       "type": "package",
-      "path": "theatreers.shared/0.0.7",
+      "path": "theatreers.shared/0.0.12",
       "files": [
-        "lib/netstandard2.0/theatreers.shared.dll",
-        "theatreers.shared.0.0.7.nupkg.sha512",
+        "lib/netstandard2.0/Theatreers.Shared.dll",
+        "theatreers.shared.0.0.12.nupkg.sha512",
         "theatreers.shared.nuspec"
       ]
     },
@@ -9460,10 +9460,10 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "theatreers.production/1.0.0": {
+    "Theatreers.Production/1.0.0": {
       "type": "project",
-      "path": "../theatreers.production/theatreers.production.csproj",
-      "msbuildProject": "../theatreers.production/theatreers.production.csproj"
+      "path": "../Theatreers.Production/Theatreers.Production.csproj",
+      "msbuildProject": "../Theatreers.Production/Theatreers.Production.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9474,7 +9474,7 @@
       "System.Diagnostics.TraceSource >= 4.3.0",
       "System.Runtime.Loader >= 4.3.0",
       "System.Xml.XPath.XmlDocument >= 4.3.0",
-      "theatreers.production >= 1.0.0",
+      "Theatreers.Production >= 1.0.0",
       "xunit >= 2.3.1",
       "xunit.runner.visualstudio >= 2.3.1"
     ]
@@ -9486,11 +9486,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production.tests\\theatreers.production.tests.csproj",
-      "projectName": "theatreers.production.tests",
-      "projectPath": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production.tests\\theatreers.production.tests.csproj",
+      "projectUniqueName": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production.Tests\\Theatreers.Production.Tests.csproj",
+      "projectName": "Theatreers.Production.Tests",
+      "projectPath": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production.Tests\\Theatreers.Production.Tests.csproj",
       "packagesPath": "C:\\Users\\chredd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production.tests\\obj\\",
+      "outputPath": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9510,8 +9510,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production\\theatreers.production.csproj": {
-              "projectPath": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production\\theatreers.production.csproj"
+            "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production\\Theatreers.Production.csproj": {
+              "projectPath": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production\\Theatreers.Production.csproj"
             }
           }
         }

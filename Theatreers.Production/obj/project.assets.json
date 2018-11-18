@@ -4350,16 +4350,16 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "theatreers.shared/0.0.7": {
+      "Theatreers.Shared/0.0.12": {
         "type": "package",
         "dependencies": {
           "MySqlConnector": "0.47.1"
         },
         "compile": {
-          "lib/netstandard2.0/theatreers.shared.dll": {}
+          "lib/netstandard2.0/Theatreers.Shared.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/theatreers.shared.dll": {}
+          "lib/netstandard2.0/Theatreers.Shared.dll": {}
         }
       }
     }
@@ -11595,13 +11595,13 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "theatreers.shared/0.0.7": {
-      "sha512": "f7K9qv6MRISmnX7HlZQL/sLyechJR2u46Eu6WhpfvD5y16neVlHPFUPyY6PPBYz/zvO/ZgErEZe5OwV73i5crw==",
+    "Theatreers.Shared/0.0.12": {
+      "sha512": "5K9L9HiDGRk5E+ysjm0lwA3FeOaoqWdypvGGvVDSeiDwP8vAurQfPPjxuAVo9z5AZQ/jR7RFXtEiOMNwZc3cIw==",
       "type": "package",
-      "path": "theatreers.shared/0.0.7",
+      "path": "theatreers.shared/0.0.12",
       "files": [
-        "lib/netstandard2.0/theatreers.shared.dll",
-        "theatreers.shared.0.0.7.nupkg.sha512",
+        "lib/netstandard2.0/Theatreers.Shared.dll",
+        "theatreers.shared.0.0.12.nupkg.sha512",
         "theatreers.shared.nuspec"
       ]
     }
@@ -11613,7 +11613,7 @@
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 0.1.1646902",
       "Newtonsoft.json >= 11.0.2",
-      "theatreers.shared >= 0.0.7"
+      "Theatreers.Shared >= 0.0.12"
     ]
   },
   "packageFolders": {
@@ -11623,17 +11623,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production\\theatreers.production.csproj",
-      "projectName": "theatreers.production",
-      "projectPath": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production\\theatreers.production.csproj",
+      "projectUniqueName": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production\\Theatreers.Production.csproj",
+      "projectName": "Theatreers.Production",
+      "projectPath": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production\\Theatreers.Production.csproj",
       "packagesPath": "C:\\Users\\chredd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production\\obj\\",
+      "outputPath": "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\chredd\\Documents\\Theatreers\\theatreers.production\\theatreers.production\\NuGet.Config",
+        "C:\\Users\\chredd\\Documents\\Theatreers\\Theatreers.Production\\Theatreers.Production\\NuGet.Config",
         "C:\\Users\\chredd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11644,7 +11644,6 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://nuget.org/api/v2/": {},
-        "https://reddobowen.pkgs.visualstudio.com/_packaging/theatreers.Artifacts/nuget/v3/index.json": {},
         "https://theatreers.pkgs.visualstudio.com/_packaging/theatreers.Artifacts/nuget/v3/index.json": {}
       },
       "frameworks": {
@@ -11685,9 +11684,9 @@
             "target": "Package",
             "version": "[11.0.2, )"
           },
-          "theatreers.shared": {
+          "Theatreers.Shared": {
             "target": "Package",
-            "version": "[0.0.7, )"
+            "version": "[0.0.12, )"
           }
         },
         "imports": [
